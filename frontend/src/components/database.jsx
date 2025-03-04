@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Bar } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -112,9 +112,6 @@ function Database() {
   const [chartHeight, setChartHeight] = useState(400);
   const [loading, setLoading] = useState(true);
 
-  // API URL を useMemo でキャッシュ
-  const API_URL = useMemo(() => getApiUrl(), []);
-
   // ■ MBTI タイプ更新用関数 ■
   const updateMBTITypes = (indicators) => {
     const filteredTypes = MBTI_TYPES.filter((type) => {
@@ -185,7 +182,7 @@ function Database() {
         media_type: contentType === 'アニメ' ? 'anime' : 'music',
       });
       try {
-        const statisticsRes = await fetch(`${API_URL}/media_works/statistics?${queryParams}`);
+        const statisticsRes = await fetch(`${getApiUrl()}/media_works/statistics?${queryParams}`);
         const statisticsData = await statisticsRes.json();
         const sortedData = Object.entries(statisticsData).sort(
           ([, aValue], [, bValue]) => bValue - aValue
@@ -208,7 +205,7 @@ function Database() {
     };
 
     fetchData();
-  }, [selectedTypes, selectedFunctions, contentType, API_URL]);
+  }, [selectedTypes, selectedFunctions, contentType]);
 
   // ■ チャート高さの計算を useCallback でメモ化 ■
   const calculateChartHeight = useCallback(() => {
