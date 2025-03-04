@@ -49,32 +49,6 @@ function AboutApp() {
                 </a>
               </p>
               <p className="mt-2">
-                心理機能について
-                <br />
-                {[
-                  { text: 'Se', url: 'http://rinnsyou.com/archives/339' },
-                  { text: 'Si', url: 'http://rinnsyou.com/archives/341' },
-                  { text: 'Ne', url: 'http://rinnsyou.com/archives/345' },
-                  { text: 'Ni', url: 'http://rinnsyou.com/archives/347' },
-                  { text: 'Te', url: 'http://rinnsyou.com/archives/327' },
-                  { text: 'Ti', url: 'http://rinnsyou.com/archives/329' },
-                  { text: 'Fe', url: 'http://rinnsyou.com/archives/333' },
-                  { text: 'Fi', url: 'http://rinnsyou.com/archives/335' },
-                ].map((item, index) => (
-                  <React.Fragment key={item.text}>
-                    <a
-                      href={item.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[#2EA9DF] hover:underline"
-                    >
-                      {item.text}
-                    </a>
-                    {index < 7 && ' '}
-                  </React.Fragment>
-                ))}
-              </p>
-              <p className="mt-2">
                 ※より正確な診断結果を得るには
                 <a
                   href="https://jppjapan.com"
